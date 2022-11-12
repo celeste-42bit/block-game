@@ -26,8 +26,8 @@ def add_box(position):
         )
     )
 
-for x in range(20):
-    for y in range(20):
+for x in range(100):
+    for y in range(100):
         add_box( (x, 0, y) )
 
 def input(key):

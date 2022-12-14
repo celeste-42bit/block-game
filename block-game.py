@@ -13,7 +13,7 @@ def random_color():
     blue = random.Random().random() * 255
     return color.rgb(red, green, blue)
 
-def add_box(position):
+def add_grass(position):
     boxes.append(
         Button(
         parent=scene,
@@ -26,15 +26,51 @@ def add_box(position):
         )
     )
 
-for x in range(100):
-    for y in range(100):
-        add_box( (x, 0, y) )
+def add_dirt(position):
+    boxes.append(
+        Button(
+        parent=scene,
+        model='cube',
+        origin=0.5,
+        color=color.rgb(70, 52, 30),
+        position=position,
+        texture='perlin_noise'
+        )
+    )
+
+def add_stone(position):
+    boxes.append(
+        Button(
+        parent=scene,
+        model='cube',
+        origin=0.5,
+        color=color.rgb(50, 50, 50),
+        position=position,
+        texture='perlin_noise'
+        )
+    )
+
+
+# world generator:
+for x in range(15):
+    for y in range(15):
+        add_grass( (x, 5, y) )
+for x in range(15):
+    for y in range(15):
+        for z in range (3, 5):
+            add_dirt( (x, z, y) )
+for x in range(15):
+    for y in range(15):
+        for z in range (0, 3):
+            add_stone( (x, z, y) )
+
+
 
 def input(key):
     for box in boxes:
         if box.hovered:
             if key == "right mouse down":
-                add_box(box.position + mouse.normal)
+                add_dirt(box.position + mouse.normal)
             if key == "left mouse down":
                 boxes.remove(box)
                 destroy(box)

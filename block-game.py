@@ -3,7 +3,7 @@ from ursina.prefabs.first_person_controller import FirstPersonController
 
 app = Ursina()
 player = FirstPersonController()
-Sky()
+Sky(texture=load_texture("sky_sunset.jpg"))
 
 boxes = []
 
@@ -20,7 +20,7 @@ def add_grass(position):
         model='cube',
         origin=0.5,
         #color=random_color(),   # <--- enable for better contrast
-        color=color.green,
+        color=color.rgb(46, 144, 0),
         position=position,
         texture='grass'
         )
@@ -32,9 +32,9 @@ def add_dirt(position):
         parent=scene,
         model='cube',
         origin=0.5,
-        color=color.rgb(70, 52, 30),
+        color=color.rgb(100, 82, 60),
         position=position,
-        texture='perlin_noise'
+        texture='perlin_noise.jpg'
         )
     )
 
@@ -44,9 +44,9 @@ def add_stone(position):
         parent=scene,
         model='cube',
         origin=0.5,
-        color=color.rgb(50, 50, 50),
+        color=color.rgb(100, 100, 100),
         position=position,
-        texture='perlin_noise'
+        texture='perlin_noise.png'
         )
     )
 
